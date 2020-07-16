@@ -1,4 +1,12 @@
+# Our CLI Controller
+
 require "test/cli/version"
+
+class Landmarks::CLI
+  def call
+    puts "Welcome to Landmarks! Are you a Delware resident?"
+  end
+end
 
 module Test
   module Cli
