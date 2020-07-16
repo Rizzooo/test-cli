@@ -1,6 +1,6 @@
 # Our CLI Controller
 
-require "test/cli/version"
+require_relative "./version"
 
 class Landmarks::CLI
   def call
