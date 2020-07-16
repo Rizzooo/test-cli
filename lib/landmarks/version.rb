@@ -1,4 +1,4 @@
-module Test
+module Landmarks
   module Cli
     VERSION = "0.1.0"
   end
