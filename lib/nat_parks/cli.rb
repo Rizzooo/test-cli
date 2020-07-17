@@ -1,6 +1,8 @@
 # Our CLI Controller
 
+require './lib/nat_parks'
 require_relative "./version"
+require 'nokogiri'
 
 class NatParks::CLI
   def call
@@ -12,6 +14,16 @@ class NatParks::CLI
         puts "My apologies. At the moment you must be a Delaware resident to use NatParks."
         exit
       end
+  end
+  
+  def choices
+    puts "Which park/trail would you like to learn more about?"
+    puts "\n1. ... \n2. ... \n3. ..."
+    input = gets.chomp 
+    
+    case input
+      
+    end
   end
 end
 
