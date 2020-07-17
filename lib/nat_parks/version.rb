@@ -1,4 +1,4 @@
-module Landmarks
+module NatParks
   module Cli
     VERSION = "0.1.0"
   end

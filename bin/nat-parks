@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require "./lib/nat_parks"
+
+NatParks::CLI.new.call
