@@ -3,22 +3,24 @@ require 'open-uri'
 class Scraper
   def index_scraper(index_url)
     html = Nokogiri::HTML(open(index_url))
-    all_info = html.css('div.col-md-9 col-sm-9 col-xs-12 table-cell list_left')
+    all_info = html.css('div#nationalMap-map map')
     all_info.map do |x|
-      {name: x.css('div.col-md-9 col-sm-9 col-xs-12 table-cell list_left h3').text,
-      type: x.css('div.col-md-9 col-sm-9 col-xs-12 table-cell list_left h2').text, 
-      description: x.css('div.col-md-9 col-sm-9 col-xs-12 table-cell list_left p').text
+      {name_one: x.css('area[alt = "Delaware"]').text,          # Will get entire area back
+      name_two: x.css('area[alt = "Pennsylvania"]').text,
+      name_three: x.css('area[alt = "New Jersey"]').text,
+      }
   end
   
   def park_scraper(park_url)
     html = Nokogiri::HTML(open(park_url))
-    info = html.css('div.ColumnMain col-sm-12')
+    info = html.css('div#parklistresultsArea ul#listparks')
     info.map do |y|
-      html.css('div.ContentHeader text-content-size h1.page-title')
+      {name: y.css('').text,
+      type_of: y.css('').text, 
+      description: y.css('').text
+      }
   end
 end
 
-<div class="ContentHeader text-content-size">
-<h1 class="page-title">The American Indians</h1>
-</div>
+
 
