@@ -1,6 +1,7 @@
 # Our CLI Controller
 
 require 'nokogiri'
+require_relative './states'
 
 class NatParks::CLI
   def call
@@ -35,18 +36,21 @@ class NatParks::CLI
     
     while input != "exit"
     
-    puts "Enter the number [1 - 3] of the state you'd like to dive deeper into."
+    puts "Enter the number [1 or 2] of the state you'd like to dive deeper into."
     puts "Enter 'list' to see list of state."
     puts "Enter 'exit' to exit."
       
     input = gets.chomp
       
-      if input.to_i > 0
-        the_state = @states[input.to_i - 1]
-        puts "#{the_state.name}"
-        puts "#{the_state.park_1}"
-        puts "#{the_state.park_2}"
-        puts "#{the_state.park_3}"
+      if input.to_i == 1
+        NatParks::States.new.one_called
+        
+      elsif input.to_i == 2
+        NatParks::States.new.two_called
+        
+      elsif input.to_i > 2
+        puts "Sorry. Number choice is not currently an option."
+        states_menu
         
       elsif input == "list"
         list_states
