@@ -5,16 +5,31 @@ require 'nokogiri'
 class NatParks::CLI
   def call
     puts "Welcome to NatParks! Are you a Pennsylvania, Delware or New Jersey resident? [ y / n ]"
+    
     answer = gets.chomp
+      
       if answer == "y"
         puts "Great! Here's the list of available states to explore!"
-        NatParks::States.states
-      else 
+        list_states
+        
+      elsif answer == "n" 
         puts "My apologies. At the moment you must located in one of the 3 states, previously disclosed, to use NatParks."
-        exit
+        goodbye
+        
+      else
+        puts "Sorry, I didn't catch that. Please enter either 'y' or 'n'."
+        call
       end
   end
   
+  def list_states
+    @states = NatParks::States.states
+    @states.each.with_index(1) do |state, i|
+      puts "#{i}. #{state.name}"
+    end
+    states_menu
+  end
+      
   def states_menu
     input = nil
     
@@ -26,21 +41,25 @@ class NatParks::CLI
       
     input = gets.chomp
       
-      case input
-        when "1"
-          puts "\nParks and Trails in PA"
-        when "2"
-          puts "\nParks and Trails in DE"
-        when "3"
-          puts "\nParks and Trails in NJ"
-        when "list"
-          print_states
-        end
-      end
+      if input.to_i > 0
+        the_state = @states[input.to_i - 1]
+        puts "#{the_state.name}"
       
-      if input == "exit"
-        exit
+      elsif input == "list"
+        list_states
+        
+      elsif input == exit 
+        goodbye
+        
+      else 
+        puts "Sorry, I didn't catch that. Please enter 'list' or 'exit'"
       end
+    end 
+  end
+    
+    def goodbye
+      puts "Goodbye"
+      exit
     end
   end
 
