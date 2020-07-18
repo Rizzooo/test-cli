@@ -44,7 +44,10 @@ class NatParks::CLI
       if input.to_i > 0
         the_state = @states[input.to_i - 1]
         puts "#{the_state.name}"
-      
+        puts "#{the_state.park_1}"
+        puts "#{the_state.park_2}"
+        puts "#{the_state.park_3}"
+        
       elsif input == "list"
         list_states
         
