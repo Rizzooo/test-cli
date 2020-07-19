@@ -2,6 +2,7 @@
 
 require 'nokogiri'
 require_relative './states'
+require './lib/scraper'
 
 class NatParks::CLI
   def call
@@ -43,7 +44,7 @@ class NatParks::CLI
     input = gets.chomp
       
       if input.to_i == 1
-        NatParks::States.new.one_called
+        Scraper.parks_pa_scrape 
         
       elsif input.to_i == 2
         NatParks::States.new.two_called

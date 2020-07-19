@@ -20,17 +20,26 @@ class Scraper
     end
   end
 
+  def self.parks_pa_scrape       
+    html = Nokogiri::HTML(open("https://everything-everywhere.com/national-park-service-sites-in-pennsylvania/"))
+    all_info = html.css('div.content-column one_half')
+    all_info.map do |x|
+      { name: x.css('li').text }
+    end
+  end
   
+  def park_1nj_scrape     
+    puts "4"
+  end
   
-  #def park_scraper(park_url)
-  #  html = Nokogiri::HTML(open(park_url))
-  #  info = html.css('div#parklistresultsArea ul#listparks')
-  #  info.map do |y|
-  #    {name: y.css('').text,
-  #    type_of: y.css('').text, 
-  #    description: y.css('').text
-  #    }
-  #end
+  def park_2nj_scrape 
+    puts "5"
+  end
+  
+  def park_3nj_scrape 
+    puts "6"
+  end
+  
 end
 
 
