@@ -21,26 +21,23 @@ class Scraper
   end
 
   def self.parks_pa_scrape       
-    html = Nokogiri::HTML(open("https://everything-everywhere.com/national-park-service-sites-in-pennsylvania/"))
-    all_info = html.css('div.content-column one_half')
-    all_info.map do |x|
-      { name: x.css('li').text }
+   
+    html = Nokogiri::HTML(open("https://www.pennlive.com/life/2018/08/how_many_of_the_26_national_pa.html"))
+    article = html.css('div.entry-content')
+    a_park = article.map do |x|
+      { name: x.css('p#YCLJ2SBMTNC2LB4QKMBKO7WR2Y b').text
+      }
     end
+    puts "#{a_park}"
   end
   
-  def park_1nj_scrape     
-    puts "4"
+  def self.parks_nj_scrape
+    html = Nokogiri::HTML(open("https://www.travelchannel.com/interests/national-parks/articles/national-parks-in-new-jersey"))
+    article = html.css('div.customRTE smartbody-core section')
+    a_parknj = article.map do |x|
+      { name: x.css('section.o-CustomRTE h2')
+      }
+    end
+    a_parknj
   end
-  
-  def park_2nj_scrape 
-    puts "5"
-  end
-  
-  def park_3nj_scrape 
-    puts "6"
-  end
-  
 end
-
-
-
