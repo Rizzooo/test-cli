@@ -6,16 +6,16 @@ require './lib/scraper'
 
 class NatParks::CLI
   def call
-    puts "Welcome to NatParks! Are you a Pennsylvania, Delware or New Jersey resident? [ y / n ]"
+    puts "Welcome to NatParks! Are you a resident or visitor in Pennsylvania or New Jersey? [ y / n ]"
     
     answer = gets.chomp
       
       if answer == "y"
-        puts "Great! Here's the list of available states to explore!"
+        puts "Great!"
         list_states
         
       elsif answer == "n" 
-        puts "My apologies. At the moment you must located in one of the 3 states, previously disclosed, to use NatParks."
+        puts "My apologies. At the moment you must located in one of the 2 states available to proceed."
         goodbye
         
       else
@@ -37,8 +37,8 @@ class NatParks::CLI
     
     while input != "exit"
     
-    puts "Enter the number [1 or 2] of the state you'd like to dive deeper into."
-    puts "Enter 'list' to see list of state."
+    puts "Enter the number [1 or 2] of the state you'd like to view National Park suggestions for."
+    puts "Enter 'list' to see list of states."
     puts "Enter 'exit' to exit."
       
     input = gets.chomp
@@ -47,7 +47,7 @@ class NatParks::CLI
         Scraper.parks_pa_scrape 
         
       elsif input.to_i == 2
-        NatParks::States.new.two_called
+        Scraper.parks_nj_scrape
         
       elsif input.to_i > 2
         puts "Sorry. Number choice is not currently an option."
@@ -66,7 +66,7 @@ class NatParks::CLI
   end
     
     def goodbye
-      puts "Goodbye"
+      puts "Goodbye."
       exit
     end
   end
