@@ -1,3 +1,5 @@
+require './lib/scraper'
+
 class NatParks::States 
   
   attr_accessor :name, :url
@@ -6,10 +8,10 @@ class NatParks::States
   def self.states # Should return instances of states user can look into
   
     state_1 = self.new
-    state_1.name = "PA"  # To be scraped from NPS
+    state_1.name = Scraper.state_scraper_pa  # To be scraped from NPS
     
     state_2 = self.new
-    state_2.name = "NJ" # To be scraped from NPS
+    state_2.name = Scraper.state_scraper_nj # To be scraped from NPS
     
     self.scrape_parks
     
