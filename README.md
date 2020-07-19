@@ -1,9 +1,7 @@
 Read me - Test 1
 # Test::Cli
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/test/cli`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Welcome to NatParks! Here you'll be able to choose from the short list of available states, and dive into them to explore some of the most popular Landmarks/National Parks in that state!
 
 ## Installation
 
@@ -23,7 +21,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+To get started enter './bin/nat-parks' in the terminal. You'll then be asked whether or not you're currently in any of the states available. If so, you'll be prompted to select the state you'd like to explore; else, you'll receive an apology message, and the app will close.
 
 ## Development
 
