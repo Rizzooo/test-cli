@@ -15,7 +15,7 @@ class NatParks::CLI
         list_states
         
       elsif answer == "n" 
-        puts "My apologies. At the moment you must located in one of the 2 states available to proceed."
+        puts "My apologies. At the moment you must be located in one of the 2 states available to proceed."
         goodbye
         
       else
