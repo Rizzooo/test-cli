@@ -1,17 +1,29 @@
 require './lib/scraper'
 
 class NatParks::States 
+  attr_accessor :name
   
-  attr_accessor :name, :url
+  def initialize(name)
+    @name = name
+  end
   
+  def self.parks
+    if self.name == "PA"
+      parks = Scraper.parks_pa_scrape 
+      parks
+    elsif self.name == "NJ"
+      parks = Scraper.parks_nj_scrape
+      parks
+    else 
+      nil
+    end
+  end
  
-  def self.states # Should return instances of states user can look into
+  def self.list # Should return instances of states user can look into
   
-    state_1 = self.new
-    state_1.name = Scraper.state_scraper_pa  # To be cleaned up
+    state_1 = self.new("PA")
     
-    state_2 = self.new
-    state_2.name = Scraper.state_scraper_nj # To be cleaned up
+    state_2 = self.new("NJ")
     
     [state_1, state_2]
   end

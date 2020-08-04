@@ -5,6 +5,7 @@ require_relative './states'
 require './lib/scraper'
 
 class NatParks::CLI
+  
   def call
     puts "Welcome to NatParks! Are you a resident or visitor in Pennsylvania or New Jersey? [ y / n ]"
     
@@ -25,7 +26,7 @@ class NatParks::CLI
   end
   
   def list_states
-    @states = NatParks::States.states
+    @states = NatParks::States.list
     @states.each.with_index(1) do |state, i|
       puts "#{i}. #{state.name}"
     end
@@ -44,10 +45,12 @@ class NatParks::CLI
     input = gets.chomp
       
       if input.to_i == 1
-        Scraper.parks_pa_scrape 
+        state = NatParks::States.new("PA")
+        state.parks
         
       elsif input.to_i == 2
-        Scraper.parks_nj_scrape
+        state = NatParks::States.new("PA")
+        NatParks::States.parks
         
       elsif input.to_i > 2
         puts "Sorry. Number choice is not currently an option."
