@@ -35,14 +35,12 @@ class Scraper
     @c_park = article.map do |x|
       x.css('p#BNYYZFZLYRETBL3IMEE3JBQD24 b').text
     end
+    
+    puts "#{@a_park}"
+    puts "#{@b_park}"
+    puts "#{@c_park}"
   end
-  
-  def pa_parks_display
-    puts "#{@a_park}""
-    puts "
-    puts
-  end
-  
+
   def self.parks_nj_scrape
     html = Nokogiri::HTML(open("https://www.nj.com/education/2016/08/njs_12_national_park_sites_how_many_have_you_visit.html"))
     article = html.css('div.entry-content')

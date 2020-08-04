@@ -7,11 +7,11 @@ class NatParks::States
     @name = name
   end
   
-  def self.parks
-    if self.name == "PA"
+  def parks
+    if @name == Scraper.state_scraper_pa
       parks = Scraper.parks_pa_scrape 
       parks
-    elsif self.name == "NJ"
+    elsif @name == Scraper.state_scraper_nj
       parks = Scraper.parks_nj_scrape
       parks
     else 
@@ -19,11 +19,11 @@ class NatParks::States
     end
   end
  
-  def self.list # Should return instances of states user can look into
+  def self.create_states
   
-    state_1 = self.new("PA")
+    state_1 = self.new(Scraper.state_scraper_pa)
     
-    state_2 = self.new("NJ")
+    state_2 = self.new(Scraper.state_scraper_nj)
     
     [state_1, state_2]
   end

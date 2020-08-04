@@ -26,7 +26,7 @@ class NatParks::CLI
   end
   
   def list_states
-    @states = NatParks::States.list
+    @states = NatParks::States.create_states
     @states.each.with_index(1) do |state, i|
       puts "#{i}. #{state.name}"
     end
@@ -45,12 +45,10 @@ class NatParks::CLI
     input = gets.chomp
       
       if input.to_i == 1
-        state = NatParks::States.new("PA")
-        state.parks
+        @states[0].parks
         
       elsif input.to_i == 2
-        state = NatParks::States.new("PA")
-        NatParks::States.parks
+        @states[1].parks
         
       elsif input.to_i > 2
         puts "Sorry. Number choice is not currently an option."
