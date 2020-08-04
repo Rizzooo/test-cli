@@ -62,6 +62,7 @@ class NatParks::CLI
         
       else 
         puts "Sorry, I didn't catch that. Please enter 'list' or 'exit'"
+        states_menu
       end
     end 
   end

@@ -5,15 +5,16 @@ class NatParks::States
   
   def initialize(name)
     @name = name
+    @parks = []
   end
   
   def parks
     if @name == Scraper.state_scraper_pa
       parks = Scraper.parks_pa_scrape 
-      parks
+      @parks << parks
     elsif @name == Scraper.state_scraper_nj
       parks = Scraper.parks_nj_scrape
-      parks
+      @parks << parks
     else 
       nil
     end
