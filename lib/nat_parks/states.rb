@@ -13,9 +13,7 @@ class NatParks::States
   end
   
   def parks
-    @parks.each_with_index do |park, i|
-      "#{i}. #{park}"
-    end
+    @parks
   end
   
   def self.all 

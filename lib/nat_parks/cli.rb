@@ -9,8 +9,8 @@ class NatParks::CLI
   def call
     puts "Welcome to NatParks!"
     puts "Loading...."
-    @pa_state = NatParks::States.new(Scraper.state_scraper_pa, Scraper.first_pa_scrape, Scraper.second_pa_scrape, Scraper.third_pa_scrape)
-    @nj_state = NatParks::States.new(Scraper.state_scraper_nj, Scraper.first_nj_scrape, Scraper.second_nj_scrape, Scraper.third_nj_scrape)
+    @pa_state = NatParks::States.new(Scraper.state_scraper_pa, Scraper.display_pa[0], Scraper.display_pa[1], Scraper.display_pa[2])
+    @nj_state = NatParks::States.new(Scraper.state_scraper_nj, Scraper.display_nj[0], Scraper.display_nj[1], Scraper.display_nj[2])
     @states = NatParks::States.all
     menu
   end
@@ -53,10 +53,10 @@ class NatParks::CLI
     input = gets.chomp
       
       if input.to_i == 1
-        @pa_state
+        @states[0].parks
         
       elsif input.to_i == 2
-        @nj_state
+        @states[1].parks
         
       elsif input.to_i > 2
         puts "Sorry. Number choice is not currently an option."
