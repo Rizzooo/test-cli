@@ -7,7 +7,14 @@ require './lib/scraper'
 class NatParks::CLI
   
   def call
-    puts "Welcome to NatParks! Are you a resident or visitor in Pennsylvania or New Jersey? [ y / n ]"
+    puts "Welcome to NatParks!"
+    puts "Loading...."
+    @states = NatParks::States.create_states
+    menu
+  end
+  
+  def menu
+    puts "Are you a resident or visitor in Pennsylvania or New Jersey? [ y / n ]"
     
     answer = gets.chomp
       
@@ -26,7 +33,6 @@ class NatParks::CLI
   end
   
   def list_states
-    @states = NatParks::States.create_states
     @states.each.with_index(1) do |state, i|
       puts "#{i}. #{state.name}"
     end

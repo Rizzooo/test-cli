@@ -36,9 +36,9 @@ class Scraper
       x.css('p#BNYYZFZLYRETBL3IMEE3JBQD24 b').text
     end
     
-    puts "#{@a_park}"
-    puts "#{@b_park}"
-    puts "#{@c_park}"
+    @a_park
+    @b_park
+    @c_park
   end
 
   def self.parks_nj_scrape
@@ -56,8 +56,8 @@ class Scraper
       x.css('p#427TEMKFL5BCHBBRYYDRVZSUJE strong').text
     end
     
-    puts "#{@a_parknj}"
-    puts "#{@b_parknj}"
-    puts "#{@c_parknj}"
+    @a_parknj
+    @b_parknj
+    @c_parknj
   end
 end
