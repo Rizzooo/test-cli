@@ -1,38 +1,29 @@
 require './lib/scraper'
 
 class NatParks::States 
-  attr_accessor :name
+  attr_accessor :name 
   
   @@all = []
   
-  def initialize(name)
+  def initialize(name, park1 = nil, park2 = nil, park3 = nil)
     @name = name
     @parks = []
-  end
- 
-  def self.create_states
-    state_1 = self.new(Scraper.state_scraper_pa)
-    state_2 = self.new(Scraper.state_scraper_nj)
-    
-    if @name == Scraper.state_scraper_pa
-      @parks << Scraper.parks_pa_scrape[@a_park, @b_parks, @c_park]
-      
-    elsif @name == Scraper.state_scraper_nj
-      @parks << Scraper.parks_nj_scrape[@a_parknj, @b_parknj, @c_parknj]
-    else 
-      nil
-    end
-    
-    @@all << state_1
-    @@all << state_2
+    @parks << park1 << park2 << park3
+    save
   end
   
-  def parks 
-    @parks
+  def parks
+    @parks.each_with_index do |park, i|
+      "#{i}. #{park}"
+    end
   end
   
   def self.all 
     @@all
+  end
+  
+  def save
+    @@all << self
   end
   
 end

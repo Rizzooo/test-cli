@@ -20,44 +20,51 @@ class Scraper
     end
   end
 
-  def self.parks_pa_scrape       
-   
+  def self.first_pa_scrape       
     html = Nokogiri::HTML(open("https://www.pennlive.com/life/2018/08/how_many_of_the_26_national_pa.html"))
     article = html.css('div.entry-content')
-    @a_park = article.map do |x|
+    @first_park = article.map do |x|
       x.css('p#YCLJ2SBMTNC2LB4QKMBKO7WR2Y b').text
     end
-    
-    @b_park = article.map do |x|
+  end 
+  
+  def self.second_pa_scrape
+    html = Nokogiri::HTML(open("https://www.pennlive.com/life/2018/08/how_many_of_the_26_national_pa.html"))
+    article = html.css('div.entry-content')
+    @second_park = article.map do |x|
       x.css('p#HXAGVUL6AVB3ZHXWNTJA367G5A b').text
     end
-    
-    @c_park = article.map do |x|
+  end
+  
+  def self.third_pa_scrape
+    html = Nokogiri::HTML(open("https://www.pennlive.com/life/2018/08/how_many_of_the_26_national_pa.html"))
+    article = html.css('div.entry-content')
+    @third_park = article.map do |x|
       x.css('p#BNYYZFZLYRETBL3IMEE3JBQD24 b').text
     end
-    
-    @a_park
-    @b_park
-    @c_park
   end
 
-  def self.parks_nj_scrape
+  def self.first_nj_scrape
     html = Nokogiri::HTML(open("https://www.nj.com/education/2016/08/njs_12_national_park_sites_how_many_have_you_visit.html"))
     article = html.css('div.entry-content')
-    @a_parknj = article.map do |x|
+    @first_park_nj = article.map do |x|
       x.css('p#XYPPRKAPERGXRM4RUM55ZCF4HU strong').text
     end
-    
-    @b_parknj = article.map do |x|
+  end
+  
+  def self.second_nj_scrape
+    html = Nokogiri::HTML(open("https://www.nj.com/education/2016/08/njs_12_national_park_sites_how_many_have_you_visit.html"))
+    article = html.css('div.entry-content')
+    @second_park_nj = article.map do |x|
       x.css('p#ORG5ZCXZSNFSTHZXTUBHV6H7VI strong').text
     end
-    
-    @c_parknj = article.map do |x|
+  end
+  
+  def self.third_nj_scrape
+    html = Nokogiri::HTML(open("https://www.nj.com/education/2016/08/njs_12_national_park_sites_how_many_have_you_visit.html"))
+    article = html.css('div.entry-content')
+    @third_park_nj = article.map do |x|
       x.css('p#427TEMKFL5BCHBBRYYDRVZSUJE strong').text
     end
-    
-    @a_parknj
-    @b_parknj
-    @c_parknj
   end
 end
