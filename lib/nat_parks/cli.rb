@@ -3,14 +3,15 @@
 require 'nokogiri'
 require_relative './states'
 require './lib/scraper'
+require 'pry'
 
 class NatParks::CLI
   
   def call
     puts "Welcome to NatParks!"
     puts "Loading...."
-    @pa_state = NatParks::States.new(Scraper.state_scraper_pa, Scraper.display_pa[0], Scraper.display_pa[1], Scraper.display_pa[2])
-    @nj_state = NatParks::States.new(Scraper.state_scraper_nj, Scraper.display_nj[0], Scraper.display_nj[1], Scraper.display_nj[2])
+    @pa_state = NatParks::States.new(Scraper.state_scraper_pa, Scraper.parks_pa_scrape)
+    @nj_state = NatParks::States.new(Scraper.state_scraper_nj, Scraper.parks_nj_scrape)
     @states = NatParks::States.all
     menu
   end
@@ -35,7 +36,8 @@ class NatParks::CLI
   end
   
   def list_states
-    @states.each.with_index(1) do |state, i|
+    @statesu = @states.uniq
+    @statesu.each.with_index(1) do |state, i|
       puts "#{i}. #{state.name}"
     end
     states_menu
@@ -53,10 +55,14 @@ class NatParks::CLI
     input = gets.chomp
       
       if input.to_i == 1
-        @states[0].parks
-        
+        arr = @pa_state.parks.split(", ").each do |park|
+          puts "#{park}"
+        end
+          
       elsif input.to_i == 2
-        @states[1].parks
+        arr = @nj_state.parks.split(", ").each do |park|
+          puts "#{park}"
+        end
         
       elsif input.to_i > 2
         puts "Sorry. Number choice is not currently an option."

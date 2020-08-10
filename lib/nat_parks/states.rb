@@ -1,18 +1,18 @@
 require './lib/scraper'
+require 'pry'
 
 class NatParks::States 
-  attr_accessor :name 
+  attr_accessor :name, :parks
   
   @@all = []
   
-  def initialize(name, park1 = nil, park2 = nil, park3 = nil)
+  def initialize(name, parks)
     @name = name
-    @parks = []
-    @parks << park1 << park2 << park3
+    @parks = parks.join(", ")
     save
   end
   
-  def parks
+  def self.parks
     @parks
   end
   
