@@ -1,5 +1,4 @@
 require './lib/scraper'
-require 'pry'
 
 class NatParks::States 
   attr_accessor :name, :parks

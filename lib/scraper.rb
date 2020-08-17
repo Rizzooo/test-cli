@@ -1,7 +1,7 @@
 require 'open-uri'
 require 'nokogiri'
 require './lib/nat_parks/states'
-require 'pry'
+
 
 
 class Scraper
