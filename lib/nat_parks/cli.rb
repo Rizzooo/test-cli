@@ -3,7 +3,6 @@
 require 'nokogiri'
 require_relative './states'
 require './lib/scraper'
-require './pry'
 
 class NatParks::CLI
   
@@ -37,6 +36,7 @@ class NatParks::CLI
   
   def list_states
     @statesu = @states.uniq
+    binding.pry
     @statesu.each.with_index(1) do |state, i|
       puts "#{i}. #{state.name}"
     end

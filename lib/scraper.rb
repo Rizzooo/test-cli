@@ -2,9 +2,10 @@ class Scraper
   def self.state_scraper_pa
     html = Nokogiri::HTML(open("https://everything-everywhere.com/national-park-service-sites-in-pennsylvania/"))
     all_info = html.css('div.inside-article')
-    all_info.map do |x|
+    penn = all_info.map do |x|
       x.css('h1.entry-title').text
     end
+    penn.join()
   end
   
   def self.state_scraper_nj
