@@ -10,11 +10,7 @@ class NatParks::States
     @parks = parks.join(", ")
     save
   end
-  
-  def self.parks
-    @parks
-  end
-  
+
   def self.all 
     @@all
   end

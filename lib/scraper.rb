@@ -1,9 +1,3 @@
-require 'open-uri'
-require 'nokogiri'
-require './lib/nat_parks/states'
-
-
-
 class Scraper
   def self.state_scraper_pa
     html = Nokogiri::HTML(open("https://everything-everywhere.com/national-park-service-sites-in-pennsylvania/"))

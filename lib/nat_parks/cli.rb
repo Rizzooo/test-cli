@@ -3,6 +3,7 @@
 require 'nokogiri'
 require_relative './states'
 require './lib/scraper'
+require './pry'
 
 class NatParks::CLI
   
@@ -63,14 +64,14 @@ class NatParks::CLI
           puts "#{park}"
         end
         
-      elsif input.to_i > 2 || input = '' && input != "exit"
+      elsif input.to_i > 2 || input == '' && input != "exit"
         puts "Sorry. This selection is not currently an option."
         states_menu
         
       elsif input == "list"
         list_states
         
-      elsif input == exit
+      elsif input == "exit"
         goodbye
         
       else 
